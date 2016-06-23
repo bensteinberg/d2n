@@ -3,6 +3,7 @@ import sys
 import socket
 import requests
 import xml.etree.ElementTree as etree
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -13,12 +14,14 @@ def root():
 
 @app.route("/<domain>")
 def lookup(domain):
+    timestamp = datetime.utcnow()
+    response = {'domain': domain,
+                'timestamp': timestamp}
     try:
-        return jsonify({'domain': domain, 'orgs': domain2orgs(domain)})
+        response['orgs'] = domain2orgs(domain)
     except:
-        error = "%s" % sys.exc_info()[0]
-        return jsonify({'domain': domain, 'error': error})
-
+        response['error'] = "%s" % (sys.exc_info(),)
+    return jsonify(response)
 
 def domain2orgs(domain):
     """Turns a domain name into a list of ARIN orgs"""
