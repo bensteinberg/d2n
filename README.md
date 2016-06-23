@@ -19,3 +19,7 @@ and
 
     pip install -r requirements.txt
     python app.py
+
+or deploy to Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)

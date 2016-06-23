@@ -1,0 +1,7 @@
+{
+    "name": "domain2orgs",
+    "description": "A Flask application for translating domain names to the org(s) responsible for the IP block",
+    "repository": "https://github.com/bensteinberg/domain2orgs",
+    "keywords": ["python", "flask", "whois"],
+    "image": "heroku/cedar-14"
+}
